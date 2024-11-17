@@ -40,11 +40,11 @@
         <!-- ボタンエリア -->
         <div class="flex items-center justify-between w-96 my-6">
             <button @click="handleSkip"
-                class="w-80 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold ml-4 py-2 px-6 rounded-l-lg transform hover:scale-105 transition duration-300">
+                class="w-80 bg-gray-400 hover:bg-gray-500 text-white font-bold ml-4 py-2 px-6 rounded-l-lg transform hover:scale-105 transition duration-300">
                 SKIP
             </button>
             <button @click="handleLike"
-                class="w-80 bg-red-500 hover:bg-red-600 text-white font-bold mr-4 py-2 px-6 rounded-r-lg transform hover:scale-105 transition duration-300">
+                class="w-80 bg-red-400 hover:bg-red-500 text-white font-bold mr-4 py-2 px-6 rounded-r-lg transform hover:scale-105 transition duration-300">
                 LIKE
             </button>
         </div>

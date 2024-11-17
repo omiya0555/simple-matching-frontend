@@ -2,7 +2,7 @@
     <nav class="bg-login-gradient text-white px-4 py-2 flex justify-between items-center">
         <!-- 左：タイトルとアイコン -->
         <div class="flex items-center space-x-2">
-            <h1 class="text-lg text-gray-700 font-semibold">SSC</h1>
+            <h1 class="text-lg text-gray-700 font-semibold">RandChat</h1>
         </div>
 
         <!-- ハンバーガーメニュー (モバイル用) -->
@@ -16,15 +16,15 @@
 
         <!-- 中央：メニュー (PC用) -->
         <div class="hidden md:flex space-x-4">
-            <router-link to="/" class="text-gray-600 hover:text-gray-900">ホーム</router-link>
-            <router-link to="/chat" class="text-gray-600 hover:text-gray-900">チャット</router-link>
-            <router-link to="/profile" class="text-gray-600 hover:text-gray-900">プロフィール</router-link>
-            <router-link to="/notifications" class="text-gray-600 hover:text-gray-900">通知</router-link>
+            <router-link to="/" class="text-gray-600 hover:text-gray-900 transition">ホーム</router-link>
+            <router-link to="/chat" class="text-gray-600 hover:text-gray-900 transition">チャット</router-link>
+            <router-link to="/profile" class="text-gray-600 hover:text-gray-900 transition">プロフィール</router-link>
+            <router-link to="/notifications" class="text-gray-600 hover:text-gray-900 transition">通知</router-link>
         </div>
 
         <!-- 右：ログアウトボタン (PC用) -->
         <div class="hidden md:block">
-            <button @click="logout" class="hover:bg-red-500 text-white px-4 py-1 rounded">ログアウト</button>
+            <button @click="logout" class="hover:bg-red-500 text-white px-4 py-1 rounded transition">ログアウト</button>
         </div>
 
         <!-- ドロップダウンメニュー (モバイル用) -->
