@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Login from "../views/LoginForm.vue";
 import Home from "../views/AppHome.vue";
-// import ChatHome from "../views/ChatHome.vue";
-// import ChatRoom from "../views/ChatRoom.vue";
+import ChatHome from "../views/ChatHome.vue";
+import ChatRoom from "../views/ChatRoom.vue";
 // import Profile from "../views/AppProfile.vue";
 // import Notification from "../views/NotificationHome.vue";
 
@@ -18,18 +18,18 @@ const routes = [
         component: Home,
         meta: { layout: "BaseLayout", requiresAuth: true },
     },
-    // {
-    //     path: "/chat",
-    //     name: "Chat",
-    //     component: ChatHome,
-    //     meta: { layout: "BaseLayout", requiresAuth: true },
-    // },
-    // {
-    //     path: "/chat/:id",
-    //     name: "ChatRoom",
-    //     component: ChatRoom,
-    //     meta: { layout: "BaseLayout", requiresAuth: true },
-    // },
+    {
+        path: "/chat",
+        name: "Chat",
+        component: ChatHome,
+        meta: { layout: "BaseLayout", requiresAuth: true },
+    },
+    {
+        path: "/chat/:id",
+        name: "ChatRoom",
+        component: ChatRoom,
+        meta: { layout: "BaseLayout", requiresAuth: true },
+    },
     // {
     //     path: "/profile",
     //     name: "Profile",

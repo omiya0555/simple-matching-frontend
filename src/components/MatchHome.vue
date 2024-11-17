@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col items-center justify-center bg-pink-100 rounded-lg relative">
+    <div class="flex flex-col items-center justify-center bg-pink-100 rounded-lg relative h-auto py-8">
         <!-- 通知エリア -->
         <transition name="fade">
             <div v-if="notification.message"
@@ -25,6 +25,12 @@
             </div>
         </transition>
 
+        <!-- ユーザーがいない場合のメッセージ -->
+        <div v-if="!currentUser && randomUsers.length === 0 || randomUsers.message" class="text-center text-gray-700 p-6">
+            <p class="text-xl font-bold">今オンラインのユーザーはいません。</p>
+            <p class="text-gray-600">しばらく待ってからもう一度試しましょう。</p>
+        </div>
+
         <!-- カード表示エリア -->
         <transition name="slide" mode="out-in">
             <div v-if="currentUser" :key="currentUser.id"
@@ -38,7 +44,7 @@
         </transition>
 
         <!-- ボタンエリア -->
-        <div class="flex items-center justify-between w-96 my-6">
+        <div v-if="currentUser" class="flex items-center justify-between w-96 my-6">
             <button @click="handleSkip"
                 class="w-80 bg-gray-400 hover:bg-gray-500 text-white font-bold ml-4 py-2 px-6 rounded-l-lg transform hover:scale-105 transition duration-300">
                 SKIP
@@ -75,6 +81,7 @@ export default {
             try {
                 const response = await apiClient.get("http://localhost/api/online-users/random");
                 this.randomUsers = response.data;
+                console.log(this.randomUsers);
             } catch (error) {
                 console.error("ランダムユーザーの取得に失敗しました", error);
             }
@@ -106,7 +113,7 @@ export default {
             if (this.currentIndex < this.randomUsers.length - 1) {
                 this.currentIndex++;
             } else {
-                this.currentIndex = 0; // リストの最後に到達した場合、最初に戻る（必要に応じてカスタマイズ）
+                this.randomUsers = []; // リストの最後に到達した場合、空にしてメッセージを表示
             }
         },
         showNotification(message) {

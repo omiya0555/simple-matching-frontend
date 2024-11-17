@@ -1,7 +1,7 @@
 <template>
     <footer class="footer bg-login-gradient text-white text-sm p-4 mt-auto">
         <div class="flex justify-between items-center">
-            <span>&copy; 2024 SSC プロジェクト</span>
+            <span>&copy; 2024 RandChat プロジェクト</span>
             <div class="footer-links space-x-4">
                 <router-link to="/" class="hover:underline">ホーム</router-link>
                 <router-link to="/profile" class="hover:underline">プロフィール</router-link>
