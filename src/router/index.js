@@ -3,7 +3,7 @@ import Login from "../views/LoginForm.vue";
 import Home from "../views/AppHome.vue";
 import ChatHome from "../views/ChatHome.vue";
 import ChatRoom from "../views/ChatRoom.vue";
-// import Profile from "../views/AppProfile.vue";
+import Profile from "../views/AppProfile.vue";
 // import Notification from "../views/NotificationHome.vue";
 
 const routes = [
@@ -30,12 +30,12 @@ const routes = [
         component: ChatRoom,
         meta: { layout: "BaseLayout", requiresAuth: true },
     },
-    // {
-    //     path: "/profile",
-    //     name: "Profile",
-    //     component: Profile,
-    //     meta: { layout: "BaseLayout", requiresAuth: true },
-    // },
+    {
+        path: "/profile",
+        name: "Profile",
+        component: Profile,
+        meta: { layout: "BaseLayout", requiresAuth: true },
+    },
     // {
     //     path: "/notifications",
     //     name: "Notification",
