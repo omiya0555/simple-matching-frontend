@@ -62,17 +62,8 @@ export default {
     mounted() {
         const container = this.$refs.messageContainer;
         container.scrollTop = container.scrollHeight;
-
-        const echo = window.Echo;
         const chatRoomId = this.$route.params.id;
-
-        echo.channel(`private-chat-room.${chatRoomId}`)
-            .listen('.message.sent', (event) => {
-                this.localMessages.push(event.message);
-                this.scrollToBottom();
-            });
-
-        echo.channel(`private-group-chat.${chatRoomId}`)
+        window.echo.channel(`chat-room.${chatRoomId}`)
             .listen('.message.sent', (event) => {
                 this.localMessages.push(event.message);
                 this.scrollToBottom();

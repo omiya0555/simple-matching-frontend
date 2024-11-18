@@ -18,7 +18,7 @@
                     <button @click="closeMatchModal" class="bg-gray-500 hover:bg-gray-600 transition text-white px-6 py-2 mr-4 rounded">
                         閉じる
                     </button>
-                    <button @click="closeMatchModal" class="bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded">
+                    <button @click="goToChatRoom" class="bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded">
                         チャットする！
                     </button>
                 </div>
@@ -81,7 +81,6 @@ export default {
             try {
                 const response = await apiClient.get("http://localhost/api/online-users/random");
                 this.randomUsers = response.data;
-                console.log(this.randomUsers);
             } catch (error) {
                 console.error("ランダムユーザーの取得に失敗しました", error);
             }
@@ -89,10 +88,11 @@ export default {
         async handleLike() {
             try {
                 const response = await apiClient.post("http://localhost/api/likes", { receiver_id: this.currentUser.id });
-                
+
                 // マッチング成功時の処理
                 if (response.data.chat_room_id) {
                     this.matchedUser = this.currentUser;
+                    this.chatRoomId = response.data.chat_room_id; // チャットルームIDを保存
                     this.showMatchModal();
                 } else {
                     this.showNotification("いいねを送りました！");
@@ -109,11 +109,10 @@ export default {
             this.nextUser();
         },
         nextUser() {
-            // 次のカードへ切り替え
             if (this.currentIndex < this.randomUsers.length - 1) {
                 this.currentIndex++;
             } else {
-                this.randomUsers = []; // リストの最後に到達した場合、空にしてメッセージを表示
+                this.randomUsers = [];
             }
         },
         showNotification(message) {
@@ -132,6 +131,13 @@ export default {
         },
         closeMatchModal() {
             this.matchModalVisible = false;
+        },
+        goToChatRoom() {
+            this.closeMatchModal();
+            if (this.chatRoomId) {
+                // チャットルームへ遷移
+                this.$router.push({ name: "ChatRoom", params: { id: this.chatRoomId } });
+            }
         },
     },
     async mounted() {

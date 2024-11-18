@@ -38,7 +38,7 @@ export default {
             try {
                 const response = await apiClient.get(`http://localhost/api/chat-rooms/`);
                 this.chatRooms = response.data;
-
+                console.log(process.env.VUE_APP_API_URL);
                 // 各チャットルームごとに自分以外のユーザーリストを生成
                 this.otherUsers = this.chatRooms.map(room =>
                     room.users.filter(user => user.id !== this.currentUserId)

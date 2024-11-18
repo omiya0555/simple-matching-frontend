@@ -18,6 +18,7 @@ if (token && expiresAt) {
         // 有効期限切れの場合、トークンを削除
         localStorage.removeItem('auth_token');
         localStorage.removeItem('expires_at');
+        location.href = '/login';
     }
 }
 
@@ -25,11 +26,13 @@ if (token && expiresAt) {
 window.Pusher = Pusher;
 
 //Laravel Echo の設定
-window.Echo = new Echo({
-    broadcaster: 'pusher',
-    key: "a3793a14555006c29e72",
-    cluster: "ap3",
-    forceTLS: true,
+window.echo = new Echo({
+    broadcaster: 'reverb',
+    key:     process.env.VUE_APP_REVERB_APP_KEY,
+    wsHost:  process.env.VUE_APP_REVERB_HOST,
+    wsPort:  process.env.VUE_APP_REVERB_PORT,
+    forceTLS: false,
+    enabledTransports: ['ws', 'wss'],
     authEndpoint: 'http://localhost/api/broadcasting/auth/', // 認証エンドポイント
     auth: {
         headers: {
@@ -37,7 +40,6 @@ window.Echo = new Echo({
         },
     },
 });
-
 
 createApp(App)
     .use(router)
