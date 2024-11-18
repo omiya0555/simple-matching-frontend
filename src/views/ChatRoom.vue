@@ -24,6 +24,7 @@
                     <ChatMessages 
                         :messages="messages" 
                         :currentUserId="currentUserId"
+                        :currentChatRoomId="currentChatRoomId" 
                     />
 
                 </div>
@@ -75,6 +76,15 @@ export default {
             } catch (error) {
                 console.error('チャットルームの取得に失敗しました', error);
             }
+        },
+    },
+    watch: {
+        '$route.params.id': {
+            immediate: true,
+            handler(newId) {
+                this.currentChatRoomId = parseInt(newId, 10);
+                this.fetchMessages();
+            },
         },
     },
     async mounted() {
