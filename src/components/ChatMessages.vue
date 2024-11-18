@@ -1,5 +1,5 @@
 <template>
-    <div class="messages bg-blue-100 w-3/4 border ml-4 p-4 rounded-md flex flex-col min-w-[400px] max-w-[1000px] mx-auto">
+    <div class="messages bg-blue-100 w-full border ml-4 p-4 rounded-md flex flex-col min-w-[400px] max-w-[1000px] mx-auto">
         <!-- メッセージリスト -->
         <div ref="messageContainer" class="message-list overflow-y-auto mb-4" style="min-height:160px; max-height: 500px;">
             <div v-for="message in localMessages" :key="message.id" class="message p-2">

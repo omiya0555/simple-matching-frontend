@@ -12,7 +12,7 @@
             <div v-if="!loading" class="home-container p-6">
                 <h1 class="w-fit text-2xl font-semibold mx-auto mb-6">マイプロフィール</h1>
                 <div class="w-fit mx-auto p-8 border rounded-sm shadow-md">
-                    <img src="{{ user.profile_image }}" class="bg-gray-100 w-32 h-32 rounded-full mx-auto mb-4">
+                    <img :src="user.profile_image" alt="ユーザーアイコン" class="w-32 h-32 rounded-full mx-auto mb-4">
                     <p>名前&emsp;: {{ user.name }}</p>
                     <p>地域&emsp;: {{ user.location }}</p>
                     <p v-if="user.gender==='male'">性別&emsp;: 男</p>
